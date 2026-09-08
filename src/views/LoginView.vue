@@ -41,11 +41,35 @@
   .login-container {
     max-width: 400px;
     margin: 50px auto;
-    padding: 20px;
+    padding: 30px;
     border: 1px solid #ccc;
     border-radius: 5px;
   }
+  .login-container div {
+    margin-bottom: 20px;
+  }
+  .login-container label {
+    display: block;
+    margin-bottom: 8px;
+  }
+  .login-container input {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+  .login-container button {
+    width: 100%;
+    padding: 12px;
+    background-color: #333;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  .login-container button:hover {
+    background-color: #555;
+  }
   .error {
     color: red;
+    margin-top: 15px;
   }
   </style>

@@ -79,6 +79,7 @@ const handleLogout = () => {
   margin: 0;
   padding: 0;
   display: flex;
+  justify-content: flex-end;
   gap: 20px;
 }
 .nav-menu a {
