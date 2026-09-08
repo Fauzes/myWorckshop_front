@@ -1,16 +1,11 @@
 <template>
   <nav class="nav-menu">
     <ul>
-      <li v-for="item in menuItems" :key="item.path">
-        <router-link :to="item.path">{{ item.label }}</router-link>
-        <ul v-if="item.children">
-          <li v-for="child in item.children" :key="child.path">
-            <router-link :to="child.path">{{ child.label }}</router-link>
-          </li>
-        </ul>
+      <li>
+        <router-link to="/">Главная</router-link>
       </li>
       <li v-if="isAuthenticated">
-        <router-link to="/profile">Профиль</router-link>
+        <span>{{ userName }}</span>
         <button @click="handleLogout">Выйти</button>
       </li>
       <li v-else>
@@ -28,40 +23,8 @@ import { useAuthStore } from '../stores/auth'
 const authStore = useAuthStore()
 const router = useRouter()
 
-const menuItems = [
-  { 
-    label: 'Главная', 
-    path: '/', 
-    children: [
-      { label: 'О компании', path: '/about' },
-      { label: 'Команда', path: '/team' },
-      { label: 'Вакансии', path: '/careers' }
-    ]
-  },
-  { 
-    label: 'Услуги', 
-    path: '/services', 
-    children: [
-      { label: 'Дизайн', path: '/services/design' },
-      { label: 'Разработка', path: '/services/development' },
-      { label: 'Маркетинг', path: '/services/marketing' }
-    ]
-  },
-  { 
-    label: 'Портфолио', 
-    path: '/portfolio'
-  },
-  { 
-    label: 'Контакты', 
-    path: '/contacts'
-  },
-  { 
-    label: 'Профиль', 
-    path: '/profile'
-  }
-]
-
 const isAuthenticated = computed(() => authStore.isAuthenticated)
+const userName = computed(() => authStore.user?.name || 'Пользователь')
 
 const handleLogout = () => {
   authStore.logout()
@@ -81,8 +44,9 @@ const handleLogout = () => {
   display: flex;
   justify-content: flex-end;
   gap: 20px;
+  align-items: center;
 }
-.nav-menu a {
+.nav-menu a, .nav-menu span {
   color: white;
   text-decoration: none;
 }
@@ -95,5 +59,6 @@ const handleLogout = () => {
   color: white;
   cursor: pointer;
   padding: 5px 10px;
+  margin-left: 10px;
 }
 </style>

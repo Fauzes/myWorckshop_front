@@ -46,20 +46,20 @@
     border-radius: 5px;
   }
   .login-container div {
-    margin-bottom: 20px;
+    margin-bottom: 25px;
   }
   .login-container label {
     display: block;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
   }
   .login-container input {
     width: 100%;
-    padding: 10px;
+    padding: 12px;
     box-sizing: border-box;
   }
   .login-container button {
     width: 100%;
-    padding: 12px;
+    padding: 14px;
     background-color: #333;
     color: white;
     border: none;
