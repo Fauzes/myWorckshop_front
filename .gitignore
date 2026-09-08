@@ -1,39 +1,31 @@
 ```
-# Dependencies
-node_modules/
-
 # Build artifacts
 dist/
 build/
-target/
+
+# Dependencies
+node_modules/
+
+# Vite cache
+.vite/
 
 # Environment variables
 .env
 .env.local
-.env.*
-
-# IDE specific
-.vscode/
-.idea/
-
-# Python related
-__pycache__/
-*.pyc
-*.pyo
-*.pyd
-*.py~
-*.py.class
+*.env.*
 
 # Logs
 *.log
 
-# Temp files
+# Temporary files
 *.tmp
-*.temp
 *.swp
-*.swo
 
-# OS generated
+# IDE files
+.vscode/
+.idea/
+
+# OS generated files
 .DS_Store
 Thumbs.db
 
@@ -42,11 +34,11 @@ coverage/
 htmlcov/
 .coverage
 
-# Testing
-.mypy_cache/
-.pytest_cache/
-.nyc_output/
-coverage/
+# Python cache (if any Python files exist in the project)
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
 
 # Compressed files
 *.zip
@@ -71,4 +63,5 @@ coverage/
 *.tar.bz2
 *.tar.xz
 *.tar.zst
+
 ```
