@@ -10,7 +10,8 @@ export const useConnectionsStore = defineStore('connections', {
         port: 5432,
         username: 'admin',
         password: 'secret123',
-        dbType: 'PostgreSQL'
+        dbType: 'PostgreSQL',
+        lastAccess: '2025-01-15 10:30:00'
       },
       {
         id: 2,
@@ -19,7 +20,8 @@ export const useConnectionsStore = defineStore('connections', {
         port: 3306,
         username: 'testuser',
         password: 'testpass',
-        dbType: 'MySQL'
+        dbType: 'MySQL',
+        lastAccess: '2025-01-14 15:45:00'
       },
       {
         id: 3,
@@ -28,7 +30,8 @@ export const useConnectionsStore = defineStore('connections', {
         port: 1521,
         username: 'prodadmin',
         password: 'prodsecret',
-        dbType: 'Oracle'
+        dbType: 'Oracle',
+        lastAccess: '2025-01-15 09:00:00'
       }
     ],
     nextId: 4
@@ -43,7 +46,8 @@ export const useConnectionsStore = defineStore('connections', {
     addConnection(connection) {
       const newConnection = {
         ...connection,
-        id: this.nextId++
+        id: this.nextId++,
+        lastAccess: new Date().toLocaleString('ru-RU')
       }
       this.connections.push(newConnection)
       return newConnection
