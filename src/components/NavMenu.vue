@@ -1,8 +1,15 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-      <!-- Левый край: Главная -->
-      <router-link class="navbar-brand" to="/">Главная</router-link>
+      <!-- Левый край: Главная и Журнал -->
+      <div class="d-flex">
+        <router-link class="navbar-brand me-3" to="/">Главная</router-link>
+        <ul class="navbar-nav" v-if="isAuthenticated">
+          <li class="nav-item">
+            <router-link class="nav-link" to="/logs">Журнал</router-link>
+          </li>
+        </ul>
+      </div>
       
       <!-- Правый край: меню -->
       <div class="d-flex ms-auto">

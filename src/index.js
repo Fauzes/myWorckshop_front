@@ -11,6 +11,7 @@ const routes = [
   { path: '/portfolio', name: 'portfolio', component: () => import('./views/PortfolioView.vue') },
   { path: '/contacts', name: 'contacts', component: () => import('./views/ContactsView.vue') },
   { path: '/profile', name: 'profile', component: () => import('./views/ProfileView.vue'), meta: { requiresAuth: true } },
+  { path: '/logs', name: 'logs', component: () => import('./views/LogsView.vue'), meta: { requiresAuth: true } },
   { path: '/login', name: 'login', component: () => import('./views/LoginView.vue') },
 ]
 

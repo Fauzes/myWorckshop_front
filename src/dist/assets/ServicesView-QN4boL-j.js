@@ -1,0 +1,1 @@
+import{P as e,g as t,l as n,n as r,t as i,w as a,y as o}from"./index-B5e0PcDs.js";var s=e((()=>{}));function c(e,n){return a(),o(`div`,null,[...n[0]||=[t(`h1`,null,`Услуги`,-1),t(`p`,null,`Мы предоставляем широкий спектр услуг.`,-1)]])}var l,u;e((()=>{n(),s(),r(),l={},u=i(l,[[`render`,c],[`__scopeId`,`data-v-846b167f`]])}))();export{u as default};
