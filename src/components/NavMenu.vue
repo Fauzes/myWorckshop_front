@@ -1,17 +1,22 @@
 <template>
-  <nav class="nav-menu">
-    <ul>
-      <li>
-        <router-link to="/">Главная</router-link>
-      </li>
-      <li v-if="isAuthenticated">
-        <span>{{ userName }}</span>
-        <button @click="handleLogout">Выйти</button>
-      </li>
-      <li v-else>
-        <router-link to="/login">Войти</router-link>
-      </li>
-    </ul>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <!-- Левый край: Главная -->
+      <router-link class="navbar-brand" to="/">Главная</router-link>
+      
+      <!-- Правый край: меню -->
+      <div class="d-flex ms-auto">
+        <ul class="navbar-nav">
+          <li v-if="isAuthenticated" class="nav-item me-3">
+            <span class="navbar-text text-white">{{ userName }}</span>
+            <button @click="handleLogout" class="btn btn-outline-light btn-sm ms-2">Выйти</button>
+          </li>
+          <li v-else class="nav-item">
+            <router-link class="nav-link" to="/login">Войти</router-link>
+          </li>
+        </ul>
+      </div>
+    </div>
   </nav>
 </template>
 
@@ -33,32 +38,7 @@ const handleLogout = () => {
 </script>
 
 <style scoped>
-.nav-menu {
-  background-color: #333;
-  padding: 10px;
-}
-.nav-menu ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: flex-end;
-  gap: 20px;
-  align-items: center;
-}
-.nav-menu a, .nav-menu span {
-  color: white;
-  text-decoration: none;
-}
-.nav-menu a:hover {
-  text-decoration: underline;
-}
-.nav-menu button {
-  background: none;
-  border: 1px solid white;
-  color: white;
-  cursor: pointer;
-  padding: 5px 10px;
-  margin-left: 10px;
+.navbar-brand {
+  font-weight: bold;
 }
 </style>

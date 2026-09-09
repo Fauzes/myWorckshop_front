@@ -1,1 +1,0 @@
-import{S as e,d as t,h as n,n as r,p as i,s as a,t as o}from"./index-BGKGQ8YA.js";var s=e((()=>{}));function c(e,r){return n(),i(`div`,null,[...r[0]||=[t(`h1`,null,`Услуги`,-1),t(`p`,null,`Мы предоставляем широкий спектр услуг.`,-1)]])}var l,u;e((()=>{a(),s(),r(),l={},u=o(l,[[`render`,c],[`__scopeId`,`data-v-846b167f`]])}))();export{u as default};
