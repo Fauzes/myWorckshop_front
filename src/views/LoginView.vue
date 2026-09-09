@@ -1,18 +1,28 @@
 <template>
-    <div class="login-container">
-      <h2>Вход в систему</h2>
-      <form @submit.prevent="handleLogin">
-        <div>
-          <label>Логин:</label>
-          <input v-model="username" type="text" required />
+    <div class="container">
+      <div class="row justify-content-center mt-5">
+        <div class="col-md-6 col-lg-4">
+          <div class="card shadow">
+            <div class="card-header bg-primary text-white">
+              <h2 class="h4 mb-0 text-center">Вход в систему</h2>
+            </div>
+            <div class="card-body p-4">
+              <form @submit.prevent="handleLogin">
+                <div class="mb-4">
+                  <label class="form-label">Логин:</label>
+                  <input v-model="username" type="text" class="form-control form-control-lg" required />
+                </div>
+                <div class="mb-4">
+                  <label class="form-label">Пароль:</label>
+                  <input v-model="password" type="password" class="form-control form-control-lg" required />
+                </div>
+                <button type="submit" class="btn btn-primary btn-lg w-100">Войти</button>
+                <p v-if="error" class="text-danger mt-3 mb-0 text-center">{{ error }}</p>
+              </form>
+            </div>
+          </div>
         </div>
-        <div>
-          <label>Пароль:</label>
-          <input v-model="password" type="password" required />
-        </div>
-        <button type="submit">Войти</button>
-        <p v-if="error" class="error">{{ error }}</p>
-      </form>
+      </div>
     </div>
   </template>
   
@@ -38,38 +48,10 @@
   </script>
   
   <style scoped>
-  .login-container {
-    max-width: 400px;
-    margin: 50px auto;
-    padding: 30px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+  .card {
+    border-radius: 10px;
   }
-  .login-container div {
-    margin-bottom: 25px;
-  }
-  .login-container label {
-    display: block;
-    margin-bottom: 10px;
-  }
-  .login-container input {
-    width: 100%;
-    padding: 12px;
-    box-sizing: border-box;
-  }
-  .login-container button {
-    width: 100%;
-    padding: 14px;
-    background-color: #333;
-    color: white;
-    border: none;
-    cursor: pointer;
-  }
-  .login-container button:hover {
-    background-color: #555;
-  }
-  .error {
-    color: red;
-    margin-top: 15px;
+  .card-header {
+    border-radius: 10px 10px 0 0 !important;
   }
   </style>
