@@ -8,6 +8,9 @@
       <div class="d-flex ms-auto">
         <ul class="navbar-nav">
           <li v-if="isAuthenticated" class="nav-item me-3">
+            <router-link class="nav-link" to="/logs">Логи</router-link>
+          </li>
+          <li v-if="isAuthenticated" class="nav-item me-3">
             <span class="navbar-text text-white">{{ userName }}</span>
             <button @click="handleLogout" class="btn btn-outline-light btn-sm ms-2">Выйти</button>
           </li>
