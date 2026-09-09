@@ -1,1 +1,1 @@
-Nothing should be ignored based on the provided file changes. The only modified file is a source code file (.vue), which should not be ignored.
+Nothing to ignore - only README.md was added, which is a source/config file. No build artifacts, dependencies, or temp files detected in the changes.
