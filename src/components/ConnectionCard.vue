@@ -1,7 +1,15 @@
 <template>
   <div class="card h-100 shadow-sm">
-    <div class="card-header bg-primary text-white">
+    <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
       <h5 class="card-title mb-0">{{ connection.name }}</h5>
+      <div v-if="isAuthenticated" class="btn-group btn-group-sm">
+        <button @click="$emit('edit', connection)" class="btn btn-outline-light">
+          <i class="bi bi-pencil"></i>
+        </button>
+        <button @click="$emit('delete', connection.id)" class="btn btn-outline-light">
+          <i class="bi bi-trash"></i>
+        </button>
+      </div>
     </div>
     <div class="card-body">
       <ul class="list-group list-group-flush">
@@ -31,12 +39,21 @@
 </template>
 
 <script setup>
+import { computed } from 'vue'
+import { useAuthStore } from '../stores/auth'
+
+const authStore = useAuthStore()
+
 defineProps({
   connection: {
     type: Object,
     required: true
   }
 })
+
+defineEmits(['edit', 'delete'])
+
+const isAuthenticated = computed(() => authStore.isAuthenticated)
 </script>
 
 <style scoped>
