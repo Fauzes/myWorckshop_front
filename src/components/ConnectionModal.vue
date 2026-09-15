@@ -73,7 +73,8 @@ const formData = ref({
   port: 5432,
   username: '',
   password: '',
-  dbType: 'PostgreSQL'
+  dbType: 'PostgreSQL',
+  lastAccess: ''
 })
 
 watch(() => props.connection, (newConn) => {

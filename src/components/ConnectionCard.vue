@@ -33,6 +33,10 @@
           <strong>Тип БД:</strong>
           <span class="badge bg-secondary">{{ connection.dbType }}</span>
         </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          <strong>Последнее обращение:</strong>
+          <span>{{ connection.lastAccess || '—' }}</span>
+        </li>
       </ul>
     </div>
   </div>

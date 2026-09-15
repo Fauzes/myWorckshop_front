@@ -1,8 +1,5 @@
 <template>
   <div class="container mt-4">
-    <h1 class="mb-4">Главная</h1>
-    <p class="lead">Добро пожаловать на наш сайт!</p>
-    
     <div v-if="isAuthenticated" class="d-flex justify-content-between align-items-center mb-4">
       <h2 class="mb-0">Подключения к базам данных</h2>
       <button @click="showAddModal" class="btn btn-primary">
