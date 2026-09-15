@@ -1,15 +1,19 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-      <!-- Левый край: Главная -->
-      <router-link class="navbar-brand" to="/">Главная</router-link>
+      <!-- Левый край: Главная и Журнал -->
+      <div class="d-flex">
+        <router-link class="navbar-brand me-3" to="/">Главная</router-link>
+        <ul class="navbar-nav" v-if="isAuthenticated">
+          <li class="nav-item">
+            <router-link class="nav-link" to="/logs">Журнал</router-link>
+          </li>
+        </ul>
+      </div>
       
       <!-- Правый край: меню -->
       <div class="d-flex ms-auto">
         <ul class="navbar-nav">
-          <li v-if="isAuthenticated" class="nav-item me-3">
-            <router-link class="nav-link" to="/logs">Логи</router-link>
-          </li>
           <li v-if="isAuthenticated" class="nav-item me-3">
             <span class="navbar-text text-white">{{ userName }}</span>
             <button @click="handleLogout" class="btn btn-outline-light btn-sm ms-2">Выйти</button>
