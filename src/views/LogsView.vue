@@ -1,7 +1,6 @@
 <template>
   <div class="container mt-4">
     <h1>Журнал событий (Логи)</h1>
-    <p class="text-muted">Доступно только для авторизованных пользователей</p>
     
     <div class="card shadow-sm">
       <div class="card-header bg-light">

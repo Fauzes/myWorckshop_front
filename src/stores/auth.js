@@ -7,7 +7,7 @@ export const useAuthStore = defineStore('auth', {
   }),
   actions: {
     login(username, password) {
-      // Имитация запроса к серверу
+      // Имитация запроса к серверу (оставлено для обратной совместимости, если fetch не используется)
       if (username === 'admin' && password === '123') {
         this.user = { name: 'Администратор', role: 'admin' }
         this.isAuthenticated = true
@@ -16,14 +16,26 @@ export const useAuthStore = defineStore('auth', {
       }
       return false
     },
+    setAuth(user) {
+      this.user = user
+      this.isAuthenticated = true
+    },
     logout() {
       this.user = null
       this.isAuthenticated = false
       localStorage.removeItem('auth')
+      localStorage.removeItem('user')
+      localStorage.removeItem('isAuthenticated')
     },
     checkAuth() {
-      const auth = localStorage.getItem('auth') === 'true'
-      if (auth) {
+      // Проверка авторизации через localStorage (для сохранения сессии после перезагрузки)
+      const storedUser = localStorage.getItem('user')
+      const isAuth = localStorage.getItem('isAuthenticated') === 'true' || localStorage.getItem('auth') === 'true'
+      
+      if (isAuth && storedUser) {
+        this.isAuthenticated = true
+        this.user = { name: storedUser, role: 'user' }
+      } else if (isAuth) {
         this.isAuthenticated = true
         this.user = { name: 'Пользователь', role: 'user' }
       }

@@ -29,20 +29,57 @@
   <script setup>
   import { ref } from 'vue'
   import { useRouter } from 'vue-router'
-  import { useAuthStore } from '../stores/auth'
   
   const username = ref('')
   const password = ref('')
   const error = ref('')
+  const isLoading = ref(false)
   const router = useRouter()
-  const authStore = useAuthStore()
   
-  const handleLogin = () => {
-    const success = authStore.login(username.value, password.value)
-    if (success) {
-      router.push('/')
-    } else {
-      error.value = 'Неверный логин или пароль (подсказка: admin / 123)'
+  const handleLogin = async () => {
+    error.value = ''
+    isLoading.value = true
+
+    // Формируем запрос в требуемом формате
+    const payload = {
+      user: {
+        login: username.value,
+        password: password.value
+      }
+    }
+
+    try {
+      // Отправляем POST запрос на сервер
+      const response = await fetch('/api/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+      })
+
+      if (!response.ok) {
+        throw new Error('Ошибка сети или неверные данные')
+      }
+
+      const data = await response.json()
+
+      // Обрабатываем ответ в формате: { "status_authorize": { "user": "", "status": "" } }
+      if (data.status_authorize && data.status_authorize.status === 'success') {
+        // Сохраняем имя пользователя и статус авторизации
+        localStorage.setItem('user', data.status_authorize.user)
+        localStorage.setItem('isAuthenticated', 'true')
+        
+        // Перенаправляем на главную страницу
+        router.push('/')
+      } else {
+        error.value = data.status_authorize?.status || 'Ошибка авторизации'
+      }
+    } catch (err) {
+      console.error('Login error:', err)
+      error.value = 'Не удалось подключиться к серверу'
+    } finally {
+      isLoading.value = false
     }
   }
   </script>
